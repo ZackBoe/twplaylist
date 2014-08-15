@@ -1,0 +1,18 @@
+[General]
+# How long to wait before fetching more tweets?
+sleep_time = 900
+# String to look for in a tweet. Case insensitive
+match = song of the day
+
+[Twitter]
+# How many tweets to get per go?
+count = 50
+user = day9tv
+client_id = your_twitter_id
+client_secret = your_twitter_secret
+[YouTube]
+client_id = your_gapps_id
+client_secret = your_gapps_secret
+# YouTube playlist ID to add videos to
+playlist = your_yt_playlist_id
+
