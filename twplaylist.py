@@ -73,7 +73,7 @@ def twplaylist():
 
     user = twitter.get_user(t_user)
 
-    last_id = 500083127889313793
+    last_id = ''
 
     while True:
         try:
