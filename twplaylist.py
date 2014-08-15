@@ -18,6 +18,7 @@ import sys
 import ConfigParser
 import httplib2
 import tweepy
+import argparse
 
 from apiclient.discovery import build
 from apiclient.http import BatchHttpRequest
@@ -25,6 +26,7 @@ from oauth2client.file import Storage
 from oauth2client.client import AccessTokenRefreshError
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.tools import run
+from oauth2client import tools
 
 # Set up config so we can get basic data
 config = ConfigParser.ConfigParser()
@@ -57,7 +59,9 @@ def twplaylist():
 
     flow = OAuth2WebServerFlow(yt_id, yt_secret, scope)
     storage = Storage('credentials.dat')
-    credentials = storage.get()
+    parser = argparse.ArgumentParser(parents=[tools.argparser])
+    flags = parser.parse_args()
+    credentials = tools.run_flow(flow, storage, flags)
     if credentials is None or credentials.invalid:
       credentials = run(flow, storage)
 
